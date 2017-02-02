@@ -1,10 +1,32 @@
 'use strict';
+import React from 'react';
+import icon from './icon.png';
+import google from 'google';
 
-const plugin = ({term, display, actions}) => {
-  // It is your main plugin function
-  // do something and call display() with your results
+google.resultsPerPage = 5;
+
+const stackoverflowPlugin = ({term, display, actions}) => {
+  let preview;
+
+  google(`${term} site:stackoverflow.com`, function (err, res) {
+    if (err) {
+      return;
+    }
+
+    const results = res.links.map((link, index) => ({
+      id: index,
+      icon,
+      title: link.title,
+      subtitle: link.href,
+      clipboard: link.href,
+    }));
+
+    display(results);
+  });
 };
 
 module.exports = {
-  fn: plugin
+  fn: stackoverflowPlugin,
+  name: 'Search on stackoverflow.com',
+  icon,
 }
