@@ -11,7 +11,7 @@ module.exports = {
     filename: 'index.js'
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.json'],
     modules: [
       path.resolve('./src'),
       path.resolve('./node_modules'),
@@ -40,6 +40,9 @@ module.exports = {
       use: {
         loader: 'url-loader'
       }
+    }, {
+      test: /\.json$/,
+      use: 'json-loader'
     }]
   }
 };

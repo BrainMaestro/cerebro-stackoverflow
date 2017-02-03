@@ -3,7 +3,6 @@ import React from 'react';
 import icon from './icon.png';
 import google from 'google';
 
-<<<<<<< dc80e28f0cd468d38c14d6358264d128c8bbd243
 google.resultsPerPage = 5;
 
 const stackoverflowPlugin = ({term, display, actions}) => {
