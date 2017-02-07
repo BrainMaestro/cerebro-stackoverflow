@@ -1,27 +1,32 @@
 'use strict';
-import React from 'react';
-import icon from './icon.png';
-import google from 'google';
+const React = require('react');
+const icon = require('./icon.png');
+const google = require('google');
 
-google.resultsPerPage = 5;
+const Preview = require('./Preview');
+const Failed = require('./Preview/failed');
 
 const stackoverflowPlugin = ({term, display, actions}) => {
-  let preview;
 
-  google(`${term} site:stackoverflow.com`, function (err, res) {
+  google(`${term} site:stackoverflow.com`, (err, res) => {
     if (err) {
-      return;
+      return display({
+        icon,
+        title: `Search for ${term}`,
+        getPreview: () => <Failed error={err} />
+      });
     }
 
-    const results = res.links.map((link, index) => ({
-      id: index,
+    display({
       icon,
-      title: link.title,
-      subtitle: link.href,
-      clipboard: link.href,
-    }));
+      title: `Search for ${term}`,
+      getPreview: () => <Preview links={res.links} />
+    });
+  });
 
-    display(results);
+  display({
+    icon,
+    title: `Search for ${term}`,
   });
 };
 
