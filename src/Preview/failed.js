@@ -1,11 +1,19 @@
 const React = require('react');
+const styles = require('../bulma.css');
 
 class Failed extends React.Component {
   render() {
+    const error = formatError(this.props.error);
+
     return (
-      <div>
-        {formatError(this.props.error)}
-      </div>
+      <article className={styles['message'] + ' ' + styles['is-warning']}>
+        <div className={styles['message-header']}>
+          <p>Search Errors</p>
+        </div>
+        <div className={styles['message-body']}>
+          {error}
+        </div>
+      </article>
     );
   }
 }
@@ -23,7 +31,7 @@ function formatError(err) {
   } else if (errorString.indexOf('ENOTFOUND') !== -1) {
     return `Cannot connect to Google. Make sure you are connected.\n ${errorString}`;
   } else {
-    return `Cannot connect to Google.\n ${errorString}`;
+    return errorString;
   }
 }
 
