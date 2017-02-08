@@ -17,6 +17,12 @@ module.exports = {
       path.resolve('./node_modules'),
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({ "global.GENTLY": false })
+  ],
+  node: {
+    __dirname: true,
+  },
   target: 'electron-renderer',
   module: {
     rules: [{
