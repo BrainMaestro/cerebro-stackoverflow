@@ -5,6 +5,9 @@ const google = require('google');
 
 const Preview = require('./Preview');
 const Failed = require('./Preview/failed');
+const styles = require('material.css');
+
+google.resultsPerPage = 10;
 
 const stackoverflowPlugin = ({term, display, actions}) => {
 
