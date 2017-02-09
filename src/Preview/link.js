@@ -8,7 +8,7 @@ class Link extends React.Component {
     const answered = link.is_answered ? ' ' + styles['is-success'] : '';
 
     return (
-      <div className={styles['box']} id={link.link} onClick={onClick}>
+      <div className={styles['box']} onClick={onClick}>
         <article className={styles['media']}>
           <div className={styles['media-left']}>
             <a className={styles['button'] + ' ' + styles['is-disabled'] + answered}>

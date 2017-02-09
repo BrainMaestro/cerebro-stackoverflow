@@ -17,14 +17,14 @@ class Preview extends React.Component {
 
   render() {
     if (this.state.chosenLink) {
-      return <Question question={question}/>
+      return <div style={{ alignSelf: 'flex-start' }}><Question question={question}/></div>
     }
 
     const { links } = this.props;
 
     return (
-      <div style={{ marginTop: 10, width: '100%' }}>
-          {links.map(link => <Link link={link} onClick={() => this.handleClick(link)} />)}
+      <div style={{ alignSelf: 'flex-start' }}>
+          {links.map((link, idx) => <Link key={idx} link={link} onClick={() => this.handleClick(link)} />)}
       </div>
     );
   }

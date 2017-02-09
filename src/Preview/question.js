@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactMarkdown = require('react-markdown');
+const Answer = require('./answer');
 const styles = require('../bulma.css');
 
 class Question extends React.Component {
@@ -8,6 +9,20 @@ class Question extends React.Component {
     this.state = {
       answers: [],
     }
+  }
+
+  renderAnswers() {
+    const { answers } = this.state;
+    if (! answers.length) {
+      return '';
+    }
+
+    return (
+      <div style={{ marginTop: 10 }} className={styles['tile'] + ' ' + styles['is-vertical'] + ' ' + styles['box']}>
+        <span className={styles['subtitle']}>{answers.length} Answers</span>
+        {this.state.answers.map((answer, idx) => (<Answer answer={answer} key={idx} />))}
+      </div>
+    );
   }
 
   render() {
@@ -38,6 +53,8 @@ class Question extends React.Component {
             </div>
           </div>
         </div>
+
+        {this.renderAnswers()}
       </div>
     )
   }
