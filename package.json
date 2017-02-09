@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "google": "^2.1.0",
+    "react-markdown": "^2.4.4",
     "stackexchange": "^0.4.0",
     "superagent": "^3.4.1"
   }

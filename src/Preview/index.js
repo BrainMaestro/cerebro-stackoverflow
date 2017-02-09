@@ -1,5 +1,6 @@
 const React = require('react');
 const Link = require('./link');
+const Question = require('./question');
 const styles = require('../bulma.css');
 
 class Preview extends React.Component {
@@ -16,7 +17,7 @@ class Preview extends React.Component {
 
   render() {
     if (this.state.chosenLink) {
-      return <div>{this.state.chosenLink.title}</div>
+      return <Question question={question}/>
     }
 
     const { links } = this.props;
