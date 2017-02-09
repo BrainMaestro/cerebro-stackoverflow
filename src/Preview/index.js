@@ -1,4 +1,5 @@
 const React = require('react');
+const Link = require('./link');
 const styles = require('../bulma.css');
 
 class Preview extends React.Component {
@@ -14,21 +15,10 @@ class Preview extends React.Component {
 
     return (
       <div style={{ marginTop: 10, width: '100%' }}>
-          {links.map(link => (
-            <div className={styles['box']} id={link.link}>
-              <span className={styles['content']}>
-                <span className={styles['is-medium']}><strong>{stripTitle(link.title)}</strong></span><br />
-                <i>{link.link}</i>
-              </span>
-            </div>
-          ))}
+          {links.map(link => <Link link={link} />)}
       </div>
     );
   }
-}
-
-function stripTitle(title) {
-    return decodeURIComponent(title.replace(' - Stack Overflow', ''));
 }
 
 Preview.propTypes = {
