@@ -1,5 +1,5 @@
 const React = require('react');
-const { getClass } = require('../utils');
+const styles = require('../bulma.css');
 
 class Preview extends React.Component {
   constructor(props) {
@@ -13,24 +13,22 @@ class Preview extends React.Component {
     const { links } = this.props;
 
     return (
-      <div style={{ borderTop: 10 }}>
-        <ul className={getClass('list')}>
+      <div style={{ marginTop: 10, width: '100%' }}>
           {links.map(link => (
-            <li className={getClass('list__item', 'list__item--two-line')}>
-              <span className={getClass('list__item-primary-content')}>
-                <span>{stripTitle(link.title)}</span>
-                <span className={getClass('list__item-sub-title')}>{link.href}</span>
+            <div className={styles['box']} id={link.link}>
+              <span className={styles['content']}>
+                <span className={styles['is-medium']}><strong>{stripTitle(link.title)}</strong></span><br />
+                <i>{link.link}</i>
               </span>
-            </li>
+            </div>
           ))}
-        </ul>
       </div>
     );
   }
 }
 
 function stripTitle(title) {
-    return title.replace(' - Stack Overflow', '');
+    return decodeURIComponent(title.replace(' - Stack Overflow', ''));
 }
 
 Preview.propTypes = {
