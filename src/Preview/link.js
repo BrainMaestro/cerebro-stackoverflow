@@ -3,12 +3,12 @@ const styles = require('../bulma.css');
 
 class Link extends React.Component {
   render() {
-    const { link } = this.props;
+    const { link, onClick } = this.props;
     link.tags = link.tags || [];
-    const answered = link.is_answered ? ' ' + styles['is-primary'] : '';
+    const answered = link.is_answered ? ' ' + styles['is-success'] : '';
 
     return (
-      <div className={styles['box']} id={link.link}>
+      <div className={styles['box']} id={link.link} onClick={onClick}>
         <article className={styles['media']}>
           <div className={styles['media-left']}>
             <a className={styles['button'] + ' ' + styles['is-disabled'] + answered}>
@@ -39,6 +39,7 @@ function format(title) {
 
 Link.propTypes = {
   link: React.PropTypes.object.isRequired,
+  onClick: React.PropTypes.func.isRequired,
 };
 
 module.exports = Link;
