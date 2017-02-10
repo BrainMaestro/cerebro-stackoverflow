@@ -45,6 +45,7 @@ function get(questionId, callback, answers = false) {
     .query(defaultQuery)
     .query({
       filter: 'withbody',
+      sort: 'votes',
     })
     .end(callback);
 }
