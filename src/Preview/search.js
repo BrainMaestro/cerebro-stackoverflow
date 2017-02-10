@@ -7,7 +7,20 @@ const query = {
   site: 'stackoverflow',
 };
 
+function searchGoogle(term, callback) {
+  term = encodeURIComponent(term);
+  google(`${term} site:stackoverflow.com`, (err, res) => {
+    if (err) {
+      callback(err, res);
+    }
+
+    console.log(res.links)
+    get(res.links, callback);
+  });
+}
+
 function get(questionId, callback, answers = false) {
+  questionId = Array.isArray(questionId) ? parseQuestionId(questionId) : questionId;
   let url = `https://api.stackexchange.com/2.2/questions/${questionId}`;
   if (answers) {
     url += '/answers';
@@ -19,23 +32,24 @@ function get(questionId, callback, answers = false) {
     .end(callback);
 }
 
-function parseQuestionId({ question_id, link }) {
-  if (question_id) {
-    return question_id;
-  }
+function parseQuestionId(links) {
+  const re = /.*stackoverflow.com\/questions\/(\d+)\//;
 
-  if (link.indexOf('stackoverflow.com') !== -1) {
-    const re = /.*stackoverflow.com\/questions\/(\d+)\//;
-    const matches = re.exec(link);
+  return links
+    .map(({ link }) => {
+      if (link.indexOf('stackoverflow.com') !== -1) {
+        const matches = re.exec(link);
 
-    if (matches.length == 2) {
-      return matches[1];
-    }
-  }
-
-  return null;
+        if (matches && matches.length == 2) {
+          return matches[1];
+        }
+      }
+    })
+    .filter(Boolean)
+    .join(';');
 }
 
 module.exports = {
   get,
+  searchGoogle,
 };
