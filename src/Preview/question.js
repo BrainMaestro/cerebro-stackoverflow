@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactMarkdown = require('react-markdown');
 const Answer = require('./answer');
+const SearchError = require('./search-error');
 const styles = require('./styles');
 const { get } = require('./search');
 
@@ -9,11 +10,19 @@ class Question extends React.Component {
     super(props);
     this.state = {
       answers: [],
+      error: {
+        message: null,
+        type: null,
+      },
     }
   }
 
   componentDidMount() {
     get(this.props.question.question_id, (err, res) => {
+      if (err) {
+        return this.setState({ error: { message: err, type: 'api' }});
+      }
+
       this.setState({ answers: res.body.items });
     }, true);
   }
@@ -33,6 +42,13 @@ class Question extends React.Component {
   }
 
   render() {
+    const { error } = this.state;
+    if (error.message) {
+      return <SearchError
+        error={error.message}
+        type={error.type} />;
+    }
+
     const { question, goBack } = this.props;
 
     return (

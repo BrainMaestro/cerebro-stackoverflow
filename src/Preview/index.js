@@ -34,12 +34,19 @@ class Preview extends React.Component {
         return this.setState({ error: { message: err, type: 'api' }});
       }
 
-      this.setState({ links: res.body.items });
+      this.setState({
+        links: res.body.items,
+        error: { message: null, type: null }
+      });
     });
   }
 
   handleClick(link) {
     get(link.question_id, (err, res) => {
+      if (err) {
+        return this.setState({ error: { message: err, type: 'api' }});
+      }
+
       this.setState({ question: res.body.items[0] });
     });
   }
@@ -63,10 +70,12 @@ class Preview extends React.Component {
     const { question, error } = this.state;
 
     if (error.message) {
-      return <SearchError
-        error={error.message}
-        type={error.type}
-        onClick={() => this.handleApiSearch()} />;
+      return (
+        <SearchError
+          error={error.message}
+          type={error.type}
+          onClick={() => this.handleApiSearch()} />
+      );
     }
 
     return (

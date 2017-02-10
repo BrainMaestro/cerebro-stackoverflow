@@ -1,5 +1,6 @@
 const google = require('google');
 const request = require('superagent');
+google.resultsPerPage = 10;
 
 const defaultQuery = {
   order: 'desc',
