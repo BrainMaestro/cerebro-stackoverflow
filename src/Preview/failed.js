@@ -3,26 +3,39 @@ const styles = require('./styles');
 
 class Failed extends React.Component {
   render() {
-    const error = formatError(this.props.error);
+    const { error, type, onClick } = this.props;
 
     return (
-      <article className={styles('message', 'is-warning')}>
-        <div className={styles('message-header')}>
-          <p>Search Errors</p>
-        </div>
-        <div className={styles('message-body')}>
-          {error}
-        </div>
-      </article>
+      <div>
+        <article className={styles('message', 'is-warning')}>
+          <div className={styles('message-header')}>
+            <p style={{ textTransform: 'capitalize' }}>{type} Error</p>
+          </div>
+          <div className={styles('message-body')}>
+            {format(error)}
+          </div>
+        </article>
+
+        {type == 'google'
+          ? <a className={styles('button', 'is-dark')}
+              onClick={onClick}>Use the stackoverflow api search instead?</a>
+          : ''}
+      </div>
     );
   }
 }
 
 Failed.propTypes = {
   error: React.PropTypes.object.isRequired,
+  type: React.PropTypes.oneOf(['google', 'api']).isRequired,
+  onClick: React.PropTypes.func,
 }
 
-function formatError(err) {
+Failed.defaultProps = {
+  onClick: () => {},
+}
+
+function format(err) {
   let errorString = err.toString();
 
   if (errorString.indexOf('have detected unusual traffic') !== -1) {

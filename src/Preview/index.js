@@ -1,8 +1,9 @@
 const React = require('react');
 const Link = require('./link');
 const Question = require('./question');
+const Failed = require('./failed');
 const styles = require('./styles');
-const { searchGoogle, get } = require('./search');
+const { searchGoogle, searchApi, get } = require('./search');
 
 class Preview extends React.Component {
   constructor(props) {
@@ -10,13 +11,31 @@ class Preview extends React.Component {
     this.state = {
       question: null,
       links: [],
+      error: {
+        message: null,
+        type: null,
+      },
     }
   }
 
   componentDidMount() {
     searchGoogle(this.props.term, (err, res) => {
+      if (err) {
+        return this.setState({ error: { message: err, type: 'google' }});
+      }
+
       this.setState({ links: res.body.items });
-    }, true);
+    });
+  }
+
+  handleApiSearch() {
+    searchApi(this.props.term, (err, res) => {
+      if (err) {
+        return this.setState({ error: { message: err, type: 'api' }});
+      }
+
+      this.setState({ links: res.body.items });
+    });
   }
 
   handleClick(link) {
@@ -41,7 +60,14 @@ class Preview extends React.Component {
   }
 
   render() {
-    const { question } = this.state;
+    const { question, error } = this.state;
+
+    if (error.message) {
+      return <Failed
+        error={error.message}
+        type={error.type}
+        onClick={() => this.handleApiSearch()} />;
+    }
 
     return (
       <div style={{ alignSelf: 'flex-start', width: '100%' }}>
