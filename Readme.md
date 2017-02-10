@@ -20,9 +20,9 @@ Google and Stackoverflow implement some form of rate limiting, so constant searc
 - [ ] Add loading indicator.
 - [ ] Indicate selected answer.
 - [ ] Show the user that posted each answer.
-- [ ] Sort answers.
 - [ ] Make a proper usage gif or screenshot.
 
+This was inspired by the great work done by santinic in [how2](https://github.com/santinic/how2)
 
 ## Related
 * [Cerebro](http://github.com/KELiON/cerebro) – main repo for Cerebro app;
