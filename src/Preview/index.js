@@ -7,24 +7,31 @@ class Preview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chosenLink: null
+      question: null,
     }
   }
 
   handleClick(link) {
-    this.setState({ chosenLink: link });
+    if (link.question_id) {
+      return this.setState({ question: link });
+    }
+  }
+
+  handleGoBack() {
+    this.setState({ question: null });
   }
 
   render() {
-    if (this.state.chosenLink) {
-      return <div style={{ alignSelf: 'flex-start', width: '100%' }}><Question question={question}/></div>
-    }
-
     const { links } = this.props;
+    const { question } = this.state;
 
     return (
       <div style={{ alignSelf: 'flex-start', width: '100%' }}>
-          {links.map((link, idx) => <Link key={idx} link={link} onClick={() => this.handleClick(link)} />)}
+          {question
+            ? <Question question={_question} goBack={() => this.handleGoBack()} />
+            : links.map((link, idx) => (
+                <Link key={idx} link={link} onClick={() => this.handleClick(link)} />
+              ))}
       </div>
     );
   }

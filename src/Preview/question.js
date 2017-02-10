@@ -52,6 +52,9 @@ class Question extends React.Component {
               <ReactMarkdown source={question.body} />
             </div>
           </div>
+          <footer className={styles('card-footer')}>
+            <a className={styles('card-footer-item')} onClick={this.props.goBack}>Go Back</a>
+          </footer>
         </div>
 
         {this.renderAnswers()}
@@ -62,6 +65,7 @@ class Question extends React.Component {
 
 Question.propTypes = {
   question: React.PropTypes.object.isRequired,
+  goBack: React.PropTypes.func.isRequired,
 }
 
 module.exports = Question;
