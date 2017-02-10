@@ -61,6 +61,7 @@ const stackoverflowPlugin = ({term, display, actions}) => {
   display({
     icon,
     title,
+    getPreview: () => <Preview term={term} />
   });
 };
 

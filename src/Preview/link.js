@@ -34,7 +34,7 @@ class Link extends React.Component {
 }
 
 function format(title) {
-    return decodeURIComponent(title.replace(' - Stack Overflow', ''));
+    return decodeURIComponent(title).replace(' - Stack Overflow', '');
 }
 
 Link.propTypes = {
