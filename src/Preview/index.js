@@ -1,7 +1,7 @@
 const React = require('react');
 const Link = require('./link');
 const Question = require('./question');
-const Failed = require('./failed');
+const SearchError = require('./search-error');
 const styles = require('./styles');
 const { searchGoogle, searchApi, get } = require('./search');
 
@@ -63,7 +63,7 @@ class Preview extends React.Component {
     const { question, error } = this.state;
 
     if (error.message) {
-      return <Failed
+      return <SearchError
         error={error.message}
         type={error.type}
         onClick={() => this.handleApiSearch()} />;

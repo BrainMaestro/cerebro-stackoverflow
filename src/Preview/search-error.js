@@ -1,7 +1,7 @@
 const React = require('react');
 const styles = require('./styles');
 
-class Failed extends React.Component {
+class SearchError extends React.Component {
   render() {
     const { error, type, onClick } = this.props;
 
@@ -25,13 +25,13 @@ class Failed extends React.Component {
   }
 }
 
-Failed.propTypes = {
+SearchError.propTypes = {
   error: React.PropTypes.object.isRequired,
   type: React.PropTypes.oneOf(['google', 'api']).isRequired,
   onClick: React.PropTypes.func,
 }
 
-Failed.defaultProps = {
+SearchError.defaultProps = {
   onClick: () => {},
 }
 
@@ -48,4 +48,4 @@ function format(err) {
   }
 }
 
-module.exports = Failed;
+module.exports = SearchError;
