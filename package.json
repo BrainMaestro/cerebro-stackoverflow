@@ -1,16 +1,15 @@
 {
-  "name": "cerebro-plugin",
-  "version": "0.0.2",
-  "description": "",
+  "name": "cerebro-stackoverflow",
+  "version": "0.1",
+  "description": "Cerebro plugin to find answers to questions on stack overflow",
   "license": "MIT",
-  "repository": "KELiON/cerebro-plugin",
+  "repository": "BrainMaestro/cerebro-stackoverflow",
   "author": {
-    "name": "Alexandr Subbotin",
-    "email": "kelionweb@gmail.com",
-    "url": "asubbotin.ru"
+    "name": "Ezinwa Okpoechi",
+    "email": "brainmaestro@outlook.com"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
     "build": "webpack && babili dist -d dist --compact --no-comments",
@@ -20,7 +19,9 @@
   "main": "dist/index.js",
   "keywords": [
     "cerebro",
-    "cerebro-plugin"
+    "cerebro-plugin",
+    "cerebro-stackoverflow",
+    "stackoverflow"
   ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
