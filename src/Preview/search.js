@@ -1,16 +1,25 @@
 const google = require('google');
 const request = require('superagent');
 
+const query = {
+  filter: 'withbody',
+  order: 'desc',
+  site: 'stackoverflow',
+};
+
 function getQuestion(link, callback) {
   const questionId = parseQuestionId(link);
 
   request
     .get(`https://api.stackexchange.com/2.2/questions/${questionId}`)
-    .query({
-      filter: 'withbody',
-      order: 'desc',
-      site: 'stackoverflow',
-    })
+    .query(query)
+    .end(callback);
+}
+
+function getAnswers(questionId, callback) {
+  request
+    .get(`https://api.stackexchange.com/2.2/questions/${questionId}/answers`)
+    .query(query)
     .end(callback);
 }
 
@@ -33,4 +42,5 @@ function parseQuestionId({ question_id, link }) {
 
 module.exports = {
   getQuestion,
+  getAnswers,
 };
