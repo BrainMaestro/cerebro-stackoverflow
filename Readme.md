@@ -19,9 +19,14 @@ Google and Stackoverflow implement some form of rate limiting, so constant searc
 ### Todo
 - [ ] Add loading indicator.
 - [ ] Indicate selected answer.
-- [ ] Show the user that posted each answer. 
+- [ ] Show the user that posted each answer.
+- [ ] Sort answers.
 - [ ] Make a proper usage gif or screenshot.
 
+
+## Related
+* [Cerebro](http://github.com/KELiON/cerebro) – main repo for Cerebro app;
+* [cerebro plugin boilerplate](https://github.com/KELiON/cerebro-plugin) – boilerplate used to create this plugin
 
 ## License
 

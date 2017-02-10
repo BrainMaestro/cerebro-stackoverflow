@@ -5,7 +5,9 @@ const Preview = require('./Preview');
 
 const stackoverflowPlugin = ({term, display, actions}) => {
   display({
+    id: 'stackoverflow',
     icon,
+    order: 11,
     title: `Search for ${term}`,
     getPreview: () => <Preview term={term} />
   });
@@ -14,6 +16,5 @@ const stackoverflowPlugin = ({term, display, actions}) => {
 module.exports = {
   fn: stackoverflowPlugin,
   name: 'Search on stackoverflow',
-  order: 10,
   icon,
 };
