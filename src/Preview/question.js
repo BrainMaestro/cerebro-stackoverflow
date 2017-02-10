@@ -2,7 +2,7 @@ const React = require('react');
 const ReactMarkdown = require('react-markdown');
 const Answer = require('./answer');
 const styles = require('./styles');
-const { getAnswers } = require('./search');
+const { get } = require('./search');
 
 class Question extends React.Component {
   constructor(props) {
@@ -13,9 +13,9 @@ class Question extends React.Component {
   }
 
   componentDidMount() {
-    getAnswers(this.props.question.question_id, (err, res) => {
+    get(this.props.question.question_id, (err, res) => {
       this.setState({ answers: res.body.items });
-    });
+    }, true);
   }
 
   renderAnswers() {

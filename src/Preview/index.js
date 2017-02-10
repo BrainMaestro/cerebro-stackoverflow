@@ -2,7 +2,7 @@ const React = require('react');
 const Link = require('./link');
 const Question = require('./question');
 const styles = require('./styles');
-const { getQuestion } = require('./search');
+const { get } = require('./search');
 
 class Preview extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Preview extends React.Component {
   }
 
   handleClick(link) {
-    getQuestion(link, (err, res) => {
+    get(link.question_id, (err, res) => {
       this.setState({ question: res.body.items[0] });
     });
   }

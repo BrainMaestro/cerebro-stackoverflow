@@ -7,18 +7,14 @@ const query = {
   site: 'stackoverflow',
 };
 
-function getQuestion(link, callback) {
-  const questionId = parseQuestionId(link);
+function get(questionId, callback, answers = false) {
+  let url = `https://api.stackexchange.com/2.2/questions/${questionId}`;
+  if (answers) {
+    url += '/answers';
+  }
 
   request
-    .get(`https://api.stackexchange.com/2.2/questions/${questionId}`)
-    .query(query)
-    .end(callback);
-}
-
-function getAnswers(questionId, callback) {
-  request
-    .get(`https://api.stackexchange.com/2.2/questions/${questionId}/answers`)
+    .get(url)
     .query(query)
     .end(callback);
 }
@@ -41,6 +37,5 @@ function parseQuestionId({ question_id, link }) {
 }
 
 module.exports = {
-  getQuestion,
-  getAnswers,
+  get,
 };
