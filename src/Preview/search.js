@@ -1,11 +1,12 @@
 const google = require('google');
 const request = require('superagent');
 
-const query = {
-  filter: 'withbody',
+const defaultQuery = {
   order: 'desc',
   site: 'stackoverflow',
 };
+
+const baseUrl = 'https://api.stackexchange.com/2.2';
 
 function searchGoogle(term, callback) {
   term = encodeURIComponent(term);
@@ -14,21 +15,36 @@ function searchGoogle(term, callback) {
       callback(err, res);
     }
 
-    console.log(res.links)
     get(res.links, callback);
   });
 }
 
+function searchApi(term, callback) {
+  term = encodeURIComponent(term);
+  const url = `${baseUrl}/search`;
+  request
+    .get(url)
+    .query(defaultQuery)
+    .query({
+      sort: 'activity',
+      intitle: term,
+    })
+    .end(callback);
+}
+
 function get(questionId, callback, answers = false) {
   questionId = Array.isArray(questionId) ? parseQuestionId(questionId) : questionId;
-  let url = `https://api.stackexchange.com/2.2/questions/${questionId}`;
+  let url = `${baseUrl}/questions/${questionId}`;
   if (answers) {
     url += '/answers';
   }
 
   request
     .get(url)
-    .query(query)
+    .query(defaultQuery)
+    .query({
+      filter: 'withbody',
+    })
     .end(callback);
 }
 
@@ -52,4 +68,5 @@ function parseQuestionId(links) {
 module.exports = {
   get,
   searchGoogle,
+  searchApi,
 };
