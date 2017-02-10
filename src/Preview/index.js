@@ -2,6 +2,7 @@ const React = require('react');
 const Link = require('./link');
 const Question = require('./question');
 const styles = require('./styles');
+const { getQuestion } = require('./search');
 
 class Preview extends React.Component {
   constructor(props) {
@@ -12,9 +13,9 @@ class Preview extends React.Component {
   }
 
   handleClick(link) {
-    if (link.question_id) {
-      return this.setState({ question: link });
-    }
+    getQuestion(link, (err, res) => {
+      this.setState({ question: res.body.items[0] });
+    });
   }
 
   handleGoBack() {
@@ -28,7 +29,7 @@ class Preview extends React.Component {
     return (
       <div style={{ alignSelf: 'flex-start', width: '100%' }}>
           {question
-            ? <Question question={_question} goBack={() => this.handleGoBack()} />
+            ? <Question question={question} goBack={() => this.handleGoBack()} />
             : links.map((link, idx) => (
                 <Link key={idx} link={link} onClick={() => this.handleClick(link)} />
               ))}

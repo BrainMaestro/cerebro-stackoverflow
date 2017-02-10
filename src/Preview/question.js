@@ -26,7 +26,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const question = this.props.question.items[0];
+    const { question, goBack } = this.props;
 
     return (
       <div>
@@ -53,7 +53,7 @@ class Question extends React.Component {
             </div>
           </div>
           <footer className={styles('card-footer')}>
-            <a className={styles('card-footer-item')} onClick={this.props.goBack}>Go Back</a>
+            <a className={styles('card-footer-item')} onClick={goBack}>Go Back</a>
           </footer>
         </div>
 
