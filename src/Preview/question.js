@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactMarkdown = require('react-markdown');
+const he = require('he');
 const Answer = require('./answer');
 const SearchError = require('./search-error');
 const styles = require('./styles');
@@ -55,7 +56,7 @@ class Question extends React.Component {
       <div>
         <div className={styles('card')}>
           <div className={styles('card-header')}>
-            <p className={styles('card-header-title')}>{question.title}</p>
+            <p className={styles('card-header-title')}>{he.decode(question.title)}</p>
           </div>
 
           <div className={styles('card-content')}>

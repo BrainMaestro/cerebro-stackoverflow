@@ -14,5 +14,6 @@ const stackoverflowPlugin = ({term, display, actions}) => {
 module.exports = {
   fn: stackoverflowPlugin,
   name: 'Search on stackoverflow',
+  order: 10,
   icon,
 };

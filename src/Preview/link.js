@@ -1,4 +1,5 @@
 const React = require('react');
+const he = require('he');
 const styles = require('./styles');
 
 class Link extends React.Component {
@@ -34,7 +35,7 @@ class Link extends React.Component {
 }
 
 function format(title) {
-    return decodeURIComponent(title).replace(' - Stack Overflow', '');
+  return he.decode(title).replace(' - Stack Overflow', '');
 }
 
 Link.propTypes = {
