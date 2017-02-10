@@ -7,7 +7,6 @@ const request = require('superagent');
 const Preview = require('./Preview');
 const Failed = require('./Preview/failed');
 const TryAgain = require('./Preview/tryagain');
-const styles = require('./bulma.css');
 
 google.resultsPerPage = 10;
 
@@ -42,8 +41,8 @@ const stackoverflowPlugin = ({term, display, actions}) => {
     const url = `https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=${encodedTerm}&site=stackoverflow`;
     request
       .get(url)
-      .end((error, res) => {
-        if (error) {
+      .end((err, res) => {
+        if (err) {
           return display({
             icon,
             title,

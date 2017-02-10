@@ -1,16 +1,16 @@
 const React = require('react');
-const styles = require('../bulma.css');
+const styles = require('./styles');
 
 class Failed extends React.Component {
   render() {
     const error = formatError(this.props.error);
 
     return (
-      <article className={styles['message'] + ' ' + styles['is-warning']}>
-        <div className={styles['message-header']}>
+      <article className={styles('message', 'is-warning')}>
+        <div className={styles('message-header')}>
           <p>Search Errors</p>
         </div>
-        <div className={styles['message-body']}>
+        <div className={styles('message-body')}>
           {error}
         </div>
       </article>

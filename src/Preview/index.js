@@ -1,7 +1,7 @@
 const React = require('react');
 const Link = require('./link');
 const Question = require('./question');
-const styles = require('../bulma.css');
+const styles = require('./styles');
 
 class Preview extends React.Component {
   constructor(props) {
@@ -17,13 +17,13 @@ class Preview extends React.Component {
 
   render() {
     if (this.state.chosenLink) {
-      return <div style={{ alignSelf: 'flex-start' }}><Question question={question}/></div>
+      return <div style={{ alignSelf: 'flex-start', width: '100%' }}><Question question={question}/></div>
     }
 
     const { links } = this.props;
 
     return (
-      <div style={{ alignSelf: 'flex-start' }}>
+      <div style={{ alignSelf: 'flex-start', width: '100%' }}>
           {links.map((link, idx) => <Link key={idx} link={link} onClick={() => this.handleClick(link)} />)}
       </div>
     );

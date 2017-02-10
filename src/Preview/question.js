@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactMarkdown = require('react-markdown');
 const Answer = require('./answer');
-const styles = require('../bulma.css');
+const styles = require('./styles');
 
 class Question extends React.Component {
   constructor(props) {
@@ -18,8 +18,8 @@ class Question extends React.Component {
     }
 
     return (
-      <div style={{ marginTop: 10 }} className={styles['tile'] + ' ' + styles['is-vertical'] + ' ' + styles['box']}>
-        <span className={styles['subtitle']}>{answers.length} Answers</span>
+      <div style={{ marginTop: 10 }} className={styles('tile', 'is-vertical', 'box')}>
+        <span className={styles('subtitle')}>{answers.length} Answers</span>
         {this.state.answers.map((answer, idx) => (<Answer answer={answer} key={idx} />))}
       </div>
     );
@@ -30,25 +30,25 @@ class Question extends React.Component {
 
     return (
       <div>
-        <div className={styles['card']}>
-          <div className={styles['card-header']}>
-            <p className={styles['card-header-title']}>{question.title}</p>
+        <div className={styles('card')}>
+          <div className={styles('card-header')}>
+            <p className={styles('card-header-title')}>{question.title}</p>
           </div>
 
-          <div className={styles['card-content']}>
-            <div className={styles['media']}  style={{ marginBottom: 0 }}>
-              <div className={styles['media-left']}>
-                <figure className={styles['image'] + ' ' + styles['is-32x32']}>
+          <div className={styles('card-content')}>
+            <div className={styles('media')}  style={{ marginBottom: 0 }}>
+              <div className={styles('media-left')}>
+                <figure className={styles('image', 'is-32x32')}>
                   <img src={question.owner.profile_image} alt="Image" />
                 </figure>
               </div>
-              <div className={styles['media-content']}>
-                <p className={styles['title'] + ' ' + styles['is-4']}>{question.owner.display_name}</p>
-                <p className={styles['subtitle'] + ' ' + styles['is-6']}>{question.owner.reputation}</p>
+              <div className={styles('media-content')}>
+                <p className={styles('title', 'is-4')}>{question.owner.display_name}</p>
+                <p className={styles('subtitle', 'is-6')}>{question.owner.reputation}</p>
               </div>
             </div>
 
-            <div className={styles['content']}>
+            <div className={styles('content')}>
               <ReactMarkdown source={question.body} />
             </div>
           </div>
