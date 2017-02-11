@@ -1,6 +1,6 @@
 {
   "name": "cerebro-stackoverflow",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cerebro plugin to find answers to questions on stack overflow",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-stackoverflow",
