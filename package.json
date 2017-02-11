@@ -28,7 +28,7 @@
     "babel-loader": "^6.2.8",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babili": "0.0.9",
+    "babili": "0.0.11",
     "cerebro-tools": "^0.1.0",
     "css-loader": "^0.26.0",
     "file-loader": "^0.10.0",
