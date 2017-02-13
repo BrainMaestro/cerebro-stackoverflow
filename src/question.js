@@ -49,7 +49,7 @@ class Question extends React.Component {
     const { question, goBack } = this.props;
 
     return (
-      <div>
+      <div className="is-small">
         <div className="card">
           <div className="card-header">
             <p className="card-header-title">{he.decode(question.title)}</p>
