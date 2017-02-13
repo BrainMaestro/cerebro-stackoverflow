@@ -11,8 +11,6 @@ const defaultQuery = {
 const baseUrl = 'https://api.stackexchange.com/2.2';
 
 const searchGoogle = memoize(term => {
-  term = encodeURIComponent(term);
-
   return new Promise((resolve, reject) => {
     google(`${term} site:stackoverflow.com`, (err, res) => {
       err ? reject(err) : resolve(get(res.links));
@@ -20,8 +18,7 @@ const searchGoogle = memoize(term => {
   });
 });
 
-const searchApi = memoize(term => {
-  term = encodeURIComponent(term);
+const searchApi = term => {
   const url = `${baseUrl}/search`;
 
   return request
@@ -31,7 +28,7 @@ const searchApi = memoize(term => {
       sort: 'activity',
       intitle: term,
     });
-});
+};
 
 const get = (questionId, answers = false) => {
   questionId = Array.isArray(questionId) ? parseQuestionId(questionId) : questionId;
