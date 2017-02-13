@@ -1,4 +1,5 @@
 const React = require('react');
+const Spinner = require('react-spinkit');
 const Link = require('./link');
 const Question = require('./question');
 const SearchError = require('./search-error');
@@ -45,9 +46,6 @@ class Preview extends React.Component {
 
   renderLinks() {
     const { links } = this.state;
-    if (! links.length) {
-      return 'waiting for data...';
-    }
 
     return links.map((link, idx) => (
         <Link key={idx} link={link} onClick={() => this.handleClick(link)} />
@@ -55,7 +53,7 @@ class Preview extends React.Component {
   }
 
   render() {
-    const { question, error } = this.state;
+    const { question, error, links } = this.state;
 
     if (error.message) {
       return (
@@ -66,8 +64,12 @@ class Preview extends React.Component {
       );
     }
 
+    if (! links.length) {
+      return <Spinner spinnerName='wave' noFadeIn />
+    }
+
     return (
-      <div style={{ alignSelf: 'flex-start', width: '100%' }}>
+      <div className='preview'>
           {question
             ? <Question question={question} goBack={() => this.handleGoBack()} />
             : this.renderLinks() }
