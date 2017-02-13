@@ -18,7 +18,7 @@ In Cerebro, type a search query. The first few questions will show in the detail
 Google and Stackoverflow implement some form of rate limiting, so constant searches over a short period of time will eventually lead to errors.
 
 ### Todo
-- [ ] Add loading indicator.
+- [x] Add loading indicator.
 - [ ] Indicate selected answer.
 - [ ] Show the user that posted each answer.
 - [x] Make a proper usage gif or screenshot.

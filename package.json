@@ -1,6 +1,6 @@
 {
   "name": "cerebro-stackoverflow",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Cerebro plugin to find answers to questions on stack overflow",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-stackoverflow",
@@ -45,6 +45,7 @@
     "google": "^2.1.0",
     "he": "^1.1.1",
     "react-markdown": "^2.4.4",
+    "react-spinkit": "^2.0.0",
     "superagent": "^3.4.1"
   }
 }

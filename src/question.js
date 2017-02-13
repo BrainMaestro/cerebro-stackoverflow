@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactMarkdown = require('react-markdown');
+const Spinner = require('react-spinkit');
 const he = require('he');
 const Answer = require('./answer');
 const SearchError = require('./search-error');
@@ -26,7 +27,7 @@ class Question extends React.Component {
   renderAnswers() {
     const { answers } = this.state;
     if (! answers.length) {
-      return '';
+      return <Spinner spinnerName='double-bounce' noFadeIn />;
     }
 
     return (

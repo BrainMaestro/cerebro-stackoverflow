@@ -29,7 +29,7 @@ module.exports = {
       { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader', query: { modules: true } }
+          { loader: 'css-loader' }
         ] },
       { test: /\.png$/, use: 'url-loader' },
       { test: /\.json$/, use: 'json-loader' },
