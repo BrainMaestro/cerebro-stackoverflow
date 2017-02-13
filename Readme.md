@@ -2,7 +2,8 @@
 
 > Cerebro plugin to find answers to questions on stack overflow
 
-![](usage.gif)
+![](questions.png)
+![](answer.png)
 
 ## Usage
 In Cerebro, type a search query. The first few questions will show in the detail pane. Clicking on any of them will show the question body and any of the answers it has.
@@ -20,7 +21,7 @@ Google and Stackoverflow implement some form of rate limiting, so constant searc
 - [ ] Add loading indicator.
 - [ ] Indicate selected answer.
 - [ ] Show the user that posted each answer.
-- [ ] Make a proper usage gif or screenshot.
+- [x] Make a proper usage gif or screenshot.
 
 This was inspired by the great work done by santinic in [how2](https://github.com/santinic/how2)
 
