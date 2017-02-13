@@ -1,5 +1,6 @@
 const google = require('google');
 const request = require('superagent');
+const { memoize } = require('cerebro-tools');
 google.resultsPerPage = 10;
 
 const defaultQuery = {
@@ -9,46 +10,44 @@ const defaultQuery = {
 
 const baseUrl = 'https://api.stackexchange.com/2.2';
 
-function searchGoogle(term, callback) {
+const searchGoogle = memoize(term => {
   term = encodeURIComponent(term);
-  google(`${term} site:stackoverflow.com`, (err, res) => {
-    if (err) {
-      callback(err, res);
-    }
 
-    get(res.links, callback);
+  return new Promise((resolve, reject) => {
+    google(`${term} site:stackoverflow.com`, (err, res) => {
+      err ? reject(err) : resolve(get(res.links));
+    });
   });
-}
+});
 
-function searchApi(term, callback) {
+const searchApi = memoize(term => {
   term = encodeURIComponent(term);
   const url = `${baseUrl}/search`;
-  request
+
+  return request
     .get(url)
     .query(defaultQuery)
     .query({
       sort: 'activity',
       intitle: term,
-    })
-    .end(callback);
-}
+    });
+});
 
-function get(questionId, callback, answers = false) {
+const get = (questionId, answers = false) => {
   questionId = Array.isArray(questionId) ? parseQuestionId(questionId) : questionId;
   let url = `${baseUrl}/questions/${questionId}`;
   if (answers) {
     url += '/answers';
   }
 
-  request
+  return request
     .get(url)
     .query(defaultQuery)
     .query({
       filter: 'withbody',
       sort: 'votes',
-    })
-    .end(callback);
-}
+    });
+};
 
 function parseQuestionId(links) {
   const re = /.*stackoverflow.com\/questions\/(\d+)\//;
@@ -69,6 +68,6 @@ function parseQuestionId(links) {
 
 module.exports = {
   get,
-  searchGoogle,
   searchApi,
+  searchGoogle,
 };

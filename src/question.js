@@ -18,13 +18,9 @@ class Question extends React.Component {
   }
 
   componentDidMount() {
-    get(this.props.question.question_id, (err, res) => {
-      if (err) {
-        return this.setState({ error: { message: err, type: 'api' }});
-      }
-
-      this.setState({ answers: res.body.items });
-    }, true);
+    get(this.props.question.question_id, true)
+      .then(res => this.setState({ answers: res.body.items }))
+      .catch(err => this.setState({ error: { message: err, type: 'api' }}));
   }
 
   renderAnswers() {

@@ -19,36 +19,24 @@ class Preview extends React.Component {
   }
 
   componentDidMount() {
-    searchGoogle(this.props.term, (err, res) => {
-      if (err) {
-        return this.setState({ error: { message: err, type: 'google' }});
-      }
-
-      this.setState({ links: res.body.items });
-    });
+    searchGoogle(this.props.term)
+      .then(res => this.setState({ links: res.body.items }))
+      .catch(err => this.setState({ error: { message: err, type: 'google' }}));
   }
 
   handleApiSearch() {
-    searchApi(this.props.term, (err, res) => {
-      if (err) {
-        return this.setState({ error: { message: err, type: 'api' }});
-      }
-
-      this.setState({
+    searchApi(this.props.term)
+      .then(res => this.setState({
         links: res.body.items,
         error: { message: null, type: null }
-      });
-    });
+      }))
+      .catch(err => this.setState({ error: { message: err, type: 'api' }}));
   }
 
   handleClick(link) {
-    get(link.question_id, (err, res) => {
-      if (err) {
-        return this.setState({ error: { message: err, type: 'api' }});
-      }
-
-      this.setState({ question: res.body.items[0] });
-    });
+    get(link.question_id)
+      .then(res => this.setState({ question: res.body.items[0] }))
+      .catch(err => this.setState({ error: { message: err, type: 'api' }}));
   }
 
   handleGoBack() {
