@@ -33,7 +33,9 @@
     "css-loader": "^0.26.0",
     "file-loader": "^0.10.0",
     "json-loader": "^0.5.4",
+    "node-sass": "^4.5.0",
     "react": "^15.4.1",
+    "sass-loader": "^5.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "2.2.1"

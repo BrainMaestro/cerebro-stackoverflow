@@ -2,8 +2,8 @@ const React = require('react');
 const Link = require('./link');
 const Question = require('./question');
 const SearchError = require('./search-error');
-const styles = require('./styles');
 const { searchGoogle, searchApi, get } = require('./search');
+require('./styles.sass');
 
 class Preview extends React.Component {
   constructor(props) {

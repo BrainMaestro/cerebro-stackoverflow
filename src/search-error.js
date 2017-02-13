@@ -1,5 +1,4 @@
 const React = require('react');
-const styles = require('./styles');
 
 class SearchError extends React.Component {
   render() {
@@ -7,17 +6,17 @@ class SearchError extends React.Component {
 
     return (
       <div>
-        <article className={styles('message', 'is-warning')}>
-          <div className={styles('message-header')}>
+        <article className="message is-warning">
+          <div className="message-header">
             <p style={{ textTransform: 'capitalize' }}>{type} Error</p>
           </div>
-          <div className={styles('message-body')}>
+          <div className="message-body">
             {format(error)}
           </div>
         </article>
 
         {type == 'google'
-          ? <a className={styles('button', 'is-dark')}
+          ? <a className="button is-dark"
               onClick={onClick}>Use the stackoverflow api search instead?</a>
           : ''}
       </div>
@@ -27,7 +26,7 @@ class SearchError extends React.Component {
 
 SearchError.propTypes = {
   error: React.PropTypes.object.isRequired,
-  type: React.PropTypes.oneOf(['google', 'api']).isRequired,
+  type: React.PropTypes.oneOf(['google api']).isRequired,
   onClick: React.PropTypes.func,
 }
 

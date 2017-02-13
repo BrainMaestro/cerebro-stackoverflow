@@ -3,7 +3,6 @@ const ReactMarkdown = require('react-markdown');
 const he = require('he');
 const Answer = require('./answer');
 const SearchError = require('./search-error');
-const styles = require('./styles');
 const { get } = require('./search');
 
 class Question extends React.Component {
@@ -35,8 +34,8 @@ class Question extends React.Component {
     }
 
     return (
-      <div style={{ marginTop: 10 }} className={styles('tile', 'is-vertical', 'box')}>
-        <span className={styles('subtitle')}>{answers.length} Answers</span>
+      <div style={{ marginTop: 10 }} className="tile is-vertical box">
+        <p className="subtitle is-6">{answers.length} Answers</p>
         {this.state.answers.map((answer, idx) => (<Answer answer={answer} key={idx} />))}
       </div>
     );
@@ -54,30 +53,30 @@ class Question extends React.Component {
 
     return (
       <div>
-        <div className={styles('card')}>
-          <div className={styles('card-header')}>
-            <p className={styles('card-header-title')}>{he.decode(question.title)}</p>
+        <div className="card">
+          <div className="card-header">
+            <p className="card-header-title">{he.decode(question.title)}</p>
           </div>
 
-          <div className={styles('card-content')}>
-            <div className={styles('media')}  style={{ marginBottom: 0 }}>
-              <div className={styles('media-left')}>
-                <figure className={styles('image', 'is-32x32')}>
+          <div className="card-content">
+            <div className="media"  style={{ marginBottom: 0 }}>
+              <div className="media-left">
+                <figure className="image is-32x32">
                   <img src={question.owner.profile_image} alt="Image" />
                 </figure>
               </div>
-              <div className={styles('media-content')}>
-                <p className={styles('title', 'is-4')}>{question.owner.display_name}</p>
-                <p className={styles('subtitle', 'is-6')}>{question.owner.reputation}</p>
+              <div className="media-content">
+                <p className="title is-4">{question.owner.display_name}</p>
+                <p className="subtitle is-6">{question.owner.reputation}</p>
               </div>
             </div>
 
-            <div className={styles('content')}>
+            <div className="content">
               <ReactMarkdown source={question.body} />
             </div>
           </div>
-          <footer className={styles('card-footer')}>
-            <a className={styles('card-footer-item')} onClick={goBack}>Go Back</a>
+          <footer className="card-footer">
+            <a className="card-footer-item" onClick={goBack}>Go Back</a>
           </footer>
         </div>
 

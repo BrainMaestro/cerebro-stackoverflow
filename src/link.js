@@ -1,6 +1,5 @@
 const React = require('react');
 const he = require('he');
-const styles = require('./styles');
 
 class Link extends React.Component {
   render() {
@@ -9,23 +8,23 @@ class Link extends React.Component {
     const answered = link.is_answered ? 'is-success' : '';
 
     return (
-      <div className={styles('box')} onClick={onClick}>
-        <article className={styles('media')}>
-          <div className={styles('media-left')}>
-            <a className={styles('button', 'is-disabled', answered)}>
+      <div className="box pointer" onClick={onClick}>
+        <article className="media">
+          <div className="media-left">
+            <a className={`button is-disabled ${answered}`}>
               {link.answer_count}
             </a>
           </div>
 
-          <div className={styles('media-content')}>
-            <div className={styles('content')}>
-              <span className={styles('is-medium')}>
+          <div className="media-content">
+            <div className="content">
+              <span className="is-medium">
                 <strong>{format(link.title)}</strong>
-                <small style={{ marginLeft: 5 }} className={styles('tag')}>
+                <small style={{ marginLeft: 5 }} className="tag">
                   {link.view_count ? `${link.view_count} views` : ''}
                 </small>
               </span><br />
-              <i>{link.link}</i>
+            <small><i>{link.link}</i></small>
             </div>
           </div>
         </article>
