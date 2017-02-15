@@ -1,30 +1,32 @@
 const React = require('react');
 const he = require('he');
+const formatNumber = require('d3-format').format('.2s');
 
 class Link extends React.Component {
   render() {
-    const { link, onClick } = this.props;
-    link.tags = link.tags || [];
-    const answered = link.is_answered ? 'is-success' : '';
+    const { onClick } = this.props;
+    const { tags, title, link, is_answered, answer_count, view_count } = this.props.link;
+    const answered = is_answered ? 'is-success' : '';
+    const views = `${formatNumber(view_count)} views`;
 
     return (
       <div className="box pointer" onClick={onClick}>
         <article className="media">
           <div className="media-left">
             <a className={`button is-disabled ${answered}`}>
-              {link.answer_count}
+              {answer_count}
             </a>
           </div>
 
           <div className="media-content">
             <div className="content">
               <span className="is-medium">
-                <strong>{format(link.title)}</strong>
+                <strong>{formatTitle(title)}</strong>
                 <small style={{ marginLeft: 5 }} className="tag">
-                  {link.view_count ? `${link.view_count} views` : ''}
+                  {views}
                 </small>
               </span><br />
-            <small><i>{link.link}</i></small>
+            <small><i>{link}</i></small>
             </div>
           </div>
         </article>
@@ -33,7 +35,7 @@ class Link extends React.Component {
   }
 }
 
-function format(title) {
+function formatTitle(title) {
   return he.decode(title).replace(' - Stack Overflow', '');
 }
 

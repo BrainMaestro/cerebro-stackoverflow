@@ -25,8 +25,11 @@ class SearchError extends React.Component {
 }
 
 SearchError.propTypes = {
-  error: React.PropTypes.object.isRequired,
-  type: React.PropTypes.oneOf(['google api']).isRequired,
+  error: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.object,
+  ]).isRequired,
+  type: React.PropTypes.oneOf(['google', 'api']).isRequired,
   onClick: React.PropTypes.func,
 }
 
