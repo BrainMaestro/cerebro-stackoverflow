@@ -6,6 +6,7 @@ google.resultsPerPage = 10;
 const defaultQuery = {
   order: 'desc',
   site: 'stackoverflow',
+  sort: 'votes',
 };
 
 const baseUrl = 'https://api.stackexchange.com/2.2';
@@ -25,7 +26,6 @@ const searchApi = term => {
     .get(url)
     .query(defaultQuery)
     .query({
-      sort: 'activity',
       intitle: term,
     });
 };
@@ -42,7 +42,6 @@ const get = (questionId, answers = false) => {
     .query(defaultQuery)
     .query({
       filter: 'withbody',
-      sort: 'votes',
     });
 };
 
