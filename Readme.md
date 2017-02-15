@@ -4,7 +4,7 @@
 > Cerebro plugin to find answers to questions on stack overflow
 
 ![](questions.png)
-![](answer.png)
+![](answers.png)
 
 ## Usage
 In Cerebro, type a search query. The first few questions will show in the detail pane. Clicking on any of them will show the question body and any of the answers it has.
