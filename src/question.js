@@ -4,6 +4,7 @@ const Spinner = require('react-spinkit');
 const he = require('he');
 const Answer = require('./answer');
 const SearchError = require('./search-error');
+const Owner = require('./owner');
 const { get } = require('./search');
 
 class Question extends React.Component {
@@ -61,23 +62,13 @@ class Question extends React.Component {
           </div>
 
           <div className="card-content">
-            <div className="media" style={{ marginBottom: 0 }}>
-              <div className="media-left">
-                <figure className="image is-32x32">
-                  <img src={question.owner.profile_image} alt="Image" />
-                </figure>
-              </div>
-              <div className="media-content">
-                <p className="title is-5">{question.owner.display_name}</p>
-                <p className="subtitle is-6">{question.owner.reputation}</p>
-              </div>
-            </div>
-
             <div className="content">
               <ReactMarkdown source={question.body} />
-              {this.renderTags()}
+                <Owner owner={question.owner} />
+                {this.renderTags()}
             </div>
           </div>
+
           <footer className="card-footer">
             <a className="card-footer-item" onClick={goBack}>Go Back</a>
             <a className="card-footer-item" href={question.link}>Open in Brower</a>

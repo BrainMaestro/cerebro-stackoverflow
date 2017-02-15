@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactMarkdown = require('react-markdown');
+const Owner = require('./owner');
 
 class Answer extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class Answer extends React.Component {
           <div className="media-content">
             <div className="content">
               <ReactMarkdown source={answer.body} />
+              <Owner owner={answer.owner} />
             </div>
           </div>
         </article>
