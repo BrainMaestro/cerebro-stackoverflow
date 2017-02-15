@@ -31,11 +31,16 @@ class Question extends React.Component {
     }
 
     return (
-      <div style={{ marginTop: 10 }} className="tile is-vertical box">
-        <p className="subtitle is-6">{answers.length} Answers</p>
+      <div className="tile is-vertical box">
         {this.state.answers.map((answer, idx) => (<Answer answer={answer} key={idx} />))}
       </div>
     );
+  }
+
+  renderTags() {
+    return this.props.question.tags.map(tag => (
+      <a className="tag link-tag" key={tag}>{tag}</a>
+    ));
   }
 
   render() {
@@ -52,24 +57,25 @@ class Question extends React.Component {
       <div className="is-small">
         <div className="card">
           <div className="card-header">
-            <p className="card-header-title">{he.decode(question.title)}</p>
+            <span className="card-header-title">{he.decode(question.title)}</span>
           </div>
 
           <div className="card-content">
-            <div className="media"  style={{ marginBottom: 0 }}>
+            <div className="media" style={{ marginBottom: 0 }}>
               <div className="media-left">
                 <figure className="image is-32x32">
                   <img src={question.owner.profile_image} alt="Image" />
                 </figure>
               </div>
               <div className="media-content">
-                <p className="title is-4">{question.owner.display_name}</p>
+                <p className="title is-5">{question.owner.display_name}</p>
                 <p className="subtitle is-6">{question.owner.reputation}</p>
               </div>
             </div>
 
             <div className="content">
               <ReactMarkdown source={question.body} />
+              {this.renderTags()}
             </div>
           </div>
           <footer className="card-footer">
