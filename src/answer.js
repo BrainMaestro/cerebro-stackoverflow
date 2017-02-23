@@ -5,12 +5,13 @@ const Owner = require('./owner');
 class Answer extends React.Component {
   render() {
     const { answer } = this.props;
+    const answered = answer.is_accepted ? 'is-success' : '';
 
     return (
       <div className="box">
         <article className="media">
           <div className="media-left">
-            <a className="button">
+            <a className={`button ${answered} is-disabled`}>
               {answer.score}
             </a>
           </div>

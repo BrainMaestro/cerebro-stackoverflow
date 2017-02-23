@@ -18,7 +18,7 @@ Google and Stackoverflow implement some form of rate limiting, so constant searc
 
 ### Todo
 - [x] Add loading indicator.
-- [ ] Indicate selected answer.
+- [x] Indicate selected answer.
 - [x] Show the user that posted each answer.
 - [x] Make a proper usage gif or screenshot.
 
