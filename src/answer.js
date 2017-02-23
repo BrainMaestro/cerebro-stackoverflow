@@ -8,7 +8,7 @@ class Answer extends React.Component {
     const answered = answer.is_accepted ? 'is-success' : '';
 
     return (
-      <div className="box">
+      <div className="box is-small" tabIndex="1">
         <article className="media">
           <div className="media-left">
             <a className={`button ${answered} is-disabled`}>

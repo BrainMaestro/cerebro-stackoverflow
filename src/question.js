@@ -5,6 +5,7 @@ const he = require('he');
 const Answer = require('./answer');
 const SearchError = require('./search-error');
 const Owner = require('./owner');
+const KeyboardNav = require('./keyboard-nav');
 const { get } = require('./search');
 
 class Question extends React.Component {
@@ -26,16 +27,16 @@ class Question extends React.Component {
   }
 
   renderAnswers() {
+    return this.state.answers.map((answer, idx) => (
+      <Answer answer={answer} key={idx} />
+    ));
+  }
+
+  renderSpinner() {
     const { answers } = this.state;
-    if (! answers.length) {
+    if (! this.state.answers.length) {
       return <Spinner spinnerName='double-bounce' noFadeIn />;
     }
-
-    return (
-      <div className="tile is-vertical box">
-        {this.state.answers.map((answer, idx) => (<Answer answer={answer} key={idx} />))}
-      </div>
-    );
   }
 
   renderTags() {
@@ -44,19 +45,12 @@ class Question extends React.Component {
     ));
   }
 
-  render() {
-    const { error } = this.state;
-    if (error.message) {
-      return <SearchError
-        error={error.message}
-        type={error.type} />;
-    }
-
+  renderBody() {
     const { question, goBack } = this.props;
 
     return (
-      <div className="is-small">
-        <div className="card">
+      <div key="-1">
+        <div className="card is-small" tabIndex="1">
           <div className="card-header">
             <span className="card-header-title">{he.decode(question.title)}</span>
           </div>
@@ -75,7 +69,27 @@ class Question extends React.Component {
           </footer>
         </div>
 
-        {this.renderAnswers()}
+        <hr />
+      </div>
+    )
+  }
+
+  render() {
+    const { error } = this.state;
+    if (error.message) {
+      return <SearchError
+        error={error.message}
+        type={error.type} />;
+    }
+
+    const elements = [this.renderBody(), ...this.renderAnswers()];
+
+    return (
+      <div>
+        <KeyboardNav goBack={this.props.goBack}>
+          {elements}
+        </KeyboardNav>
+        {this.renderSpinner()}
       </div>
     )
   }

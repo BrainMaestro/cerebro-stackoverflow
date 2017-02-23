@@ -50,6 +50,8 @@ function parseQuestionId(links) {
 
   return links
     .map(({ link }) => {
+      if (!link) return
+      
       if (link.indexOf('stackoverflow.com') !== -1) {
         const matches = re.exec(link);
 

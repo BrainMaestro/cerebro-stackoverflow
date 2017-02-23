@@ -3,6 +3,7 @@ const Spinner = require('react-spinkit');
 const Link = require('./link');
 const Question = require('./question');
 const SearchError = require('./search-error');
+const KeyboardNav = require('./keyboard-nav');
 const { searchGoogle, searchApi, get } = require('./search');
 require('./styles.sass');
 
@@ -72,7 +73,7 @@ class Preview extends React.Component {
       <div className='preview'>
           {question
             ? <Question question={question} goBack={() => this.handleGoBack()} />
-            : this.renderLinks() }
+            : <KeyboardNav>{this.renderLinks()}</KeyboardNav> }
       </div>
     );
   }

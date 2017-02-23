@@ -10,7 +10,7 @@ class Link extends React.Component {
     const views = `${formatNumber(view_count)} views`;
 
     return (
-      <div className="box pointer" onClick={onClick}>
+      <div className="box pointer" tabIndex="0" onClick={onClick}>
         <article className="media">
           <div className="media-left">
             <a className={`button ${answered} is-disabled`}>
