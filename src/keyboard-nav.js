@@ -61,7 +61,9 @@ const onKeyDown = (wrapper, event, goBack) => {
 
 class KeyboardNav extends React.Component {
   componentDidMount() {
-    this.wrapper.querySelectorAll('[tabindex]')[0].focus()
+    if (this.props.focus) {
+      this.wrapper.querySelectorAll('[tabindex]')[0].focus()
+    }
   }
 
   onKeyDown(event) {
@@ -83,6 +85,7 @@ KeyboardNav.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.element),
   ]),
   goBack: React.PropTypes.func,
+  focus: React.PropTypes.boolean,
 };
 
 KeyboardNav.defaultProps = {

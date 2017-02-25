@@ -1,6 +1,6 @@
 {
   "name": "cerebro-stackoverflow",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Cerebro plugin to find answers to questions on stack overflow",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-stackoverflow",
@@ -14,7 +14,8 @@
   "scripts": {
     "build": "webpack && babili dist -d dist --compact --no-comments",
     "debug": "./scripts/debug",
-    "prepublish": "rm -rf ./dist && npm run build"
+    "debug:windows": "scripts\\debug.bat",
+    "prepublish": "rimraf ./dist && npm run build"
   },
   "main": "dist/index.js",
   "keywords": [
@@ -35,6 +36,7 @@
     "json-loader": "^0.5.4",
     "node-sass": "^4.5.0",
     "react": "^15.4.1",
+    "rimraf": "^2.6.1",
     "sass-loader": "^5.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
