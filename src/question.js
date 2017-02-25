@@ -86,7 +86,7 @@ class Question extends React.Component {
 
     return (
       <div>
-        <KeyboardNav goBack={this.props.goBack}>
+        <KeyboardNav goBack={this.props.goBack} focus>
           {elements}
         </KeyboardNav>
         {this.renderSpinner()}
