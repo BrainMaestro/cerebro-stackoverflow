@@ -65,7 +65,7 @@ class Question extends React.Component {
 
           <footer className="card-footer">
             <a className="card-footer-item" onClick={goBack}>Go Back</a>
-            <a className="card-footer-item" href={question.link}>Open in Brower</a>
+            <a className="card-footer-item" href={question.link}>Open in Browser</a>
           </footer>
         </div>
 
