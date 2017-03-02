@@ -20,10 +20,13 @@ export default class Question extends Component {
     }
   }
 
-  componentDidMount() {
-    get(this.props.question.question_id, true)
-      .then(res => this.setState({ answers: res.body.items }))
-      .catch(err => this.setState({ error: { message: err, type: 'api' }}));
+  async componentDidMount() {
+    try {
+      const res = await get(this.props.question.question_id, true);
+      this.setState({ answers: res.body.items });
+    } catch (err) {
+      this.setState({ error: { message: err, type: 'api' }});
+    }
   }
 
   renderAnswers() {

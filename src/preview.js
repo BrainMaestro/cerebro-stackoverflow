@@ -20,19 +20,25 @@ export default class Preview extends Component {
     }
   }
 
-  componentDidMount() {
-    searchGoogle(this.props.term)
-      .then(res => this.setState({ links: res.body.items }))
-      .catch(err => this.setState({ error: { message: err, type: 'google' }}));
+  async componentDidMount() {
+    try {
+      const res = await searchGoogle(this.props.term);
+      this.setState({ links: res.body.items });
+    } catch (err) {
+      this.setState({ error: { message: err, type: 'google' }});
+    }
   }
 
-  handleApiSearch() {
-    searchApi(this.props.term)
-      .then(res => this.setState({
+  async handleApiSearch() {
+    try {
+      const res = await searchApi(this.props.term);
+      this.setState({
         links: res.body.items,
         error: { message: null, type: null }
-      }))
-      .catch(err => this.setState({ error: { message: err, type: 'api' }}));
+      });
+    } catch (err) {
+      this.setState({ error: { message: err, type: 'api' }});
+    }
   }
 
   handleClick(link) {

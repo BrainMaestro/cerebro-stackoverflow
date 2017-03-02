@@ -62,7 +62,7 @@ const onKeyDown = (wrapper, event, goBack) => {
 export default class KeyboardNav extends Component {
   componentDidMount() {
     if (this.props.focus) {
-      this.wrapper.querySelectorAll('[tabindex]')[0].focus();
+      this.wrapper.querySelectorAll('[tabindex]')[0].focus()
     }
   }
 

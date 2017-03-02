@@ -28,6 +28,7 @@
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.8",
     "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babili": "0.0.11",
     "cerebro-tools": "^0.1.0",
