@@ -1,9 +1,9 @@
 'use strict';
-const React = require('react');
-const icon = require('./icon.png');
-const Preview = require('./preview');
+import React from 'react';
+import icon from './icon.png';
+import Preview from './preview';
 
-const stackoverflowPlugin = ({term, display, actions}) => {
+const stackoverflowPlugin = ({ term, display }) => {
   display({
     id: 'stackoverflow',
     icon,
@@ -13,8 +13,4 @@ const stackoverflowPlugin = ({term, display, actions}) => {
   });
 };
 
-module.exports = {
-  fn: stackoverflowPlugin,
-  name: 'Search on stackoverflow',
-  icon,
-};
+export { stackoverflowPlugin as fn };

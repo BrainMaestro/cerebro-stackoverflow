@@ -1,8 +1,9 @@
-const React = require('react');
-const he = require('he');
-const formatNumber = require('d3-format').format('.2s');
+import React, { Component, PropTypes } from 'react';
+import he from 'he';
+import { format } from 'd3-format';
+const formatNumber = format('.2s');
 
-class Link extends React.Component {
+export default class Link extends Component {
   render() {
     const { onClick } = this.props;
     const { title, score, link, is_answered, answer_count, view_count } = this.props.link;
@@ -43,8 +44,6 @@ function formatTitle(title) {
 }
 
 Link.propTypes = {
-  link: React.PropTypes.object.isRequired,
-  onClick: React.PropTypes.func.isRequired,
+  link: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
-
-module.exports = Link;

@@ -1,8 +1,8 @@
-const React = require('react');
-const ReactMarkdown = require('react-markdown');
-const Owner = require('./owner');
+import React, { Component, PropTypes } from 'react';
+import ReactMarkdown from 'react-markdown';
+import Owner from './owner';
 
-class Answer extends React.Component {
+export default class Answer extends Component {
   render() {
     const { answer } = this.props;
     const answered = answer.is_accepted ? 'is-success' : '';
@@ -29,7 +29,5 @@ class Answer extends React.Component {
 }
 
 Answer.propTypes = {
-  answer: React.PropTypes.object.isRequired,
-}
-
-module.exports = Answer;
+  answer: PropTypes.object.isRequired,
+};

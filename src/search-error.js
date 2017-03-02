@@ -1,6 +1,6 @@
-const React = require('react');
+import React, { Component, PropTypes } from 'react';
 
-class SearchError extends React.Component {
+export default class SearchError extends Component {
   render() {
     const { error, type, onClick } = this.props;
 
@@ -25,12 +25,12 @@ class SearchError extends React.Component {
 }
 
 SearchError.propTypes = {
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object,
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
   ]).isRequired,
-  type: React.PropTypes.oneOf(['google', 'api']).isRequired,
-  onClick: React.PropTypes.func,
+  type: PropTypes.oneOf(['google', 'api']).isRequired,
+  onClick: PropTypes.func,
 }
 
 SearchError.defaultProps = {
@@ -49,5 +49,3 @@ function format(err) {
     return errorString;
   }
 }
-
-module.exports = SearchError;

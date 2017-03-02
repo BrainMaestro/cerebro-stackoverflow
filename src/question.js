@@ -1,14 +1,14 @@
-const React = require('react');
-const ReactMarkdown = require('react-markdown');
-const Spinner = require('react-spinkit');
-const he = require('he');
-const Answer = require('./answer');
-const SearchError = require('./search-error');
-const Owner = require('./owner');
-const KeyboardNav = require('./keyboard-nav');
-const { get } = require('./search');
+import React, { Component, PropTypes } from 'react';
+import ReactMarkdown from 'react-markdown';
+import Spinner from 'react-spinkit';
+import htmlentities from 'he';
+import Answer from './answer';
+import SearchError from './search-error';
+import Owner from './owner';
+import KeyboardNav from './keyboard-nav';
+import { get } from './search';
 
-class Question extends React.Component {
+export default class Question extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,7 +52,7 @@ class Question extends React.Component {
       <div key="-1">
         <div className="card is-small" tabIndex="1">
           <div className="card-header">
-            <span className="card-header-title">{he.decode(question.title)}</span>
+            <span className="card-header-title">{htmlentities.decode(question.title)}</span>
           </div>
 
           <div className="card-content">
@@ -96,8 +96,6 @@ class Question extends React.Component {
 }
 
 Question.propTypes = {
-  question: React.PropTypes.object.isRequired,
-  goBack: React.PropTypes.func.isRequired,
+  question: PropTypes.object.isRequired,
+  goBack: PropTypes.func.isRequired,
 }
-
-module.exports = Question;

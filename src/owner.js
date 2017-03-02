@@ -1,6 +1,6 @@
-const React = require('react');
+import React, { Component, PropTypes } from 'react';
 
-class Owner extends React.Component {
+export default class Owner extends Component {
   render() {
     const { profile_image, display_name, reputation, link } = this.props.owner;
 
@@ -23,12 +23,10 @@ class Owner extends React.Component {
 }
 
 Owner.propTypes = {
-  owner: React.PropTypes.shape({
-    profile_image: React.PropTypes.string,
-    display_name: React.PropTypes.string,
-    reputation: React.PropTypes.number,
-    link: React.PropTypes.string,
+  owner: PropTypes.shape({
+    profile_image: PropTypes.string,
+    display_name: PropTypes.string,
+    reputation: PropTypes.number,
+    link: PropTypes.string,
   }),
 }
-
-module.exports = Owner;

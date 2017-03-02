@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { Component, PropTypes } from 'react';
 
 /**
  * Focus element with index from elements array.
@@ -59,15 +59,15 @@ const onKeyDown = (wrapper, event, goBack) => {
   }
 }
 
-class KeyboardNav extends React.Component {
+export default class KeyboardNav extends Component {
   componentDidMount() {
     if (this.props.focus) {
-      this.wrapper.querySelectorAll('[tabindex]')[0].focus()
+      this.wrapper.querySelectorAll('[tabindex]')[0].focus();
     }
   }
 
   onKeyDown(event) {
-    onKeyDown(this.wrapper, event, this.props.goBack)
+    onKeyDown(this.wrapper, event, this.props.goBack);
   }
 
   render() {
@@ -80,12 +80,12 @@ class KeyboardNav extends React.Component {
 }
 
 KeyboardNav.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.arrayOf(React.PropTypes.element),
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
   ]),
-  goBack: React.PropTypes.func,
-  focus: React.PropTypes.boolean,
+  goBack: PropTypes.func,
+  focus: PropTypes.bool,
 };
 
 KeyboardNav.defaultProps = {
@@ -96,5 +96,3 @@ KeyboardNav.defaultProps = {
     mainInput.setSelectionRange(position, position)
   }
 }
-
-module.exports = KeyboardNav;

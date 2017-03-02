@@ -1,6 +1,6 @@
-const google = require('google');
-const request = require('superagent');
-const { memoize } = require('cerebro-tools');
+import google from 'google';
+import request from 'superagent';
+import { memoize } from 'cerebro-tools';
 google.resultsPerPage = 10;
 
 const defaultQuery = {
@@ -11,7 +11,7 @@ const defaultQuery = {
 
 const baseUrl = 'https://api.stackexchange.com/2.2';
 
-const searchGoogle = memoize(term => {
+export const searchGoogle = memoize(term => {
   return new Promise((resolve, reject) => {
     google(`${term} site:stackoverflow.com`, (err, res) => {
       err ? reject(err) : resolve(get(res.links));
@@ -19,7 +19,7 @@ const searchGoogle = memoize(term => {
   });
 });
 
-const searchApi = term => {
+export const searchApi = term => {
   const url = `${baseUrl}/search`;
 
   return request
@@ -30,7 +30,7 @@ const searchApi = term => {
     });
 };
 
-const get = (questionId, answers = false) => {
+export const get = (questionId, answers = false) => {
   questionId = Array.isArray(questionId) ? parseQuestionId(questionId) : questionId;
   let url = `${baseUrl}/questions/${questionId}`;
   if (answers) {
@@ -51,7 +51,7 @@ function parseQuestionId(links) {
   return links
     .map(({ link }) => {
       if (!link) return
-      
+
       if (link.indexOf('stackoverflow.com') !== -1) {
         const matches = re.exec(link);
 
@@ -63,9 +63,3 @@ function parseQuestionId(links) {
     .filter(Boolean)
     .join(';');
 }
-
-module.exports = {
-  get,
-  searchApi,
-  searchGoogle,
-};

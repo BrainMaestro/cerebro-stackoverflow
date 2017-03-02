@@ -1,13 +1,13 @@
-const React = require('react');
-const Spinner = require('react-spinkit');
-const Link = require('./link');
-const Question = require('./question');
-const SearchError = require('./search-error');
-const KeyboardNav = require('./keyboard-nav');
-const { searchGoogle, searchApi, get } = require('./search');
-require('./styles.sass');
+import React, { Component, PropTypes } from 'react';
+import Spinner from 'react-spinkit';
+import Link from './link';
+import Question from './question';
+import SearchError from './search-error';
+import KeyboardNav from './keyboard-nav';
+import { searchGoogle, searchApi, get } from './search';
+import './styles.sass';
 
-class Preview extends React.Component {
+export default class Preview extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -82,5 +82,3 @@ class Preview extends React.Component {
 Preview.propTypes = {
   term: React.PropTypes.string.isRequired,
 }
-
-module.exports = Preview;
