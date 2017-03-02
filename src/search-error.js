@@ -8,7 +8,7 @@ export default class SearchError extends Component {
       <div>
         <article className='message is-warning'>
           <div className='message-header'>
-            <p style={{ textTransform: 'capitalize' }}>{type} Error</p>
+            <p className='error-message'>{type} Error</p>
           </div>
           <div className='message-body'>
             {format(error)}

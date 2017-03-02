@@ -8,7 +8,7 @@ export default class Owner extends Component {
       <div>
         <hr />
         <div className='is-pulled-right'>
-          <div className='image is-32x32' style={{ marginRight: 10, display: 'inline-block' }}>
+          <div className='image is-32x32 owner-image'>
             <img src={profile_image} alt='Poster Image' />
           </div>
 
