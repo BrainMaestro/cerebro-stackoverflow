@@ -6,17 +6,17 @@ export default class SearchError extends Component {
 
     return (
       <div>
-        <article className="message is-warning">
-          <div className="message-header">
+        <article className='message is-warning'>
+          <div className='message-header'>
             <p style={{ textTransform: 'capitalize' }}>{type} Error</p>
           </div>
-          <div className="message-body">
+          <div className='message-body'>
             {format(error)}
           </div>
         </article>
 
         {type == 'google'
-          ? <a className="button is-dark"
+          ? <a className='button is-dark'
               onClick={onClick}>Use the stackoverflow api search instead?</a>
           : ''}
       </div>

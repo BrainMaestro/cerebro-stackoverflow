@@ -11,17 +11,17 @@ export default class Link extends Component {
     const views = `${formatNumber(view_count)} views`;
 
     return (
-      <div className="box pointer" tabIndex="0" onClick={onClick}>
-        <article className="media">
-          <div className="media-left">
+      <div className='box pointer' tabIndex='0' onClick={onClick}>
+        <article className='media'>
+          <div className='media-left'>
             <a className={`button ${answered} is-disabled`}>
               {score}
             </a>
           </div>
 
-          <div className="media-content">
-            <div className="content">
-              <span className="is-medium">
+          <div className='media-content'>
+            <div className='content'>
+              <span className='is-medium'>
                 <strong>{formatTitle(title)}</strong>
               </span>
               <br />
@@ -29,8 +29,8 @@ export default class Link extends Component {
               <small><i>{link}</i></small>
               <br />
 
-              <a className="tag link-tag">{views}</a>
-              <a className="tag link-tag">{`${answer_count} answers`}</a>
+              <a className='tag link-tag'>{views}</a>
+              <a className='tag link-tag'>{`${answer_count} answers`}</a>
             </div>
           </div>
         </article>

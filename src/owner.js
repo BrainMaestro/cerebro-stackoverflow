@@ -7,12 +7,12 @@ export default class Owner extends Component {
     return (
       <div>
         <hr />
-        <div className="is-pulled-right">
-          <div className="image is-32x32" style={{ marginRight: 10, display: 'inline-block' }}>
-            <img src={profile_image} alt="Poster Image" />
+        <div className='is-pulled-right'>
+          <div className='image is-32x32' style={{ marginRight: 10, display: 'inline-block' }}>
+            <img src={profile_image} alt='Poster Image' />
           </div>
 
-          <span className="is-inline-block">
+          <span className='is-inline-block'>
             <small>{display_name}</small><br />
             <small>{reputation}</small>
           </span>

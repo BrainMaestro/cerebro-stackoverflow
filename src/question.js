@@ -41,7 +41,7 @@ export default class Question extends Component {
 
   renderTags() {
     return this.props.question.tags.map(tag => (
-      <a className="tag link-tag" key={tag}>{tag}</a>
+      <a className='tag link-tag' key={tag}>{tag}</a>
     ));
   }
 
@@ -49,23 +49,23 @@ export default class Question extends Component {
     const { question, goBack } = this.props;
 
     return (
-      <div key="-1">
-        <div className="card is-small" tabIndex="1">
-          <div className="card-header">
-            <span className="card-header-title">{htmlentities.decode(question.title)}</span>
+      <div key='-1'>
+        <div className='card is-small' tabIndex='1'>
+          <div className='card-header'>
+            <span className='card-header-title'>{htmlentities.decode(question.title)}</span>
           </div>
 
-          <div className="card-content">
-            <div className="content">
+          <div className='card-content'>
+            <div className='content'>
               <ReactMarkdown source={question.body} />
                 <Owner owner={question.owner} />
                 {this.renderTags()}
             </div>
           </div>
 
-          <footer className="card-footer">
-            <a className="card-footer-item" onClick={goBack}>Go Back</a>
-            <a className="card-footer-item" href={question.link}>Open in Browser</a>
+          <footer className='card-footer'>
+            <a className='card-footer-item' onClick={goBack}>Go Back</a>
+            <a className='card-footer-item' href={question.link}>Open in Browser</a>
           </footer>
         </div>
 
